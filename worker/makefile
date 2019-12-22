@@ -3,7 +3,6 @@ download-redis:
 
 setup-volume:
 	mkdir data
-	sudo chown -R 1000:1000 data/
 
 start-redis:
 	docker run --name redis-job-board \
