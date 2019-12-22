@@ -22,6 +22,9 @@ const fetchGithub = async () => {
   }
 
   console.log(`got ${allJobs.length} jobs`);
+  const successs = await setAsync('github', JSON.stringify(allJobs));
+
+  console.log(successs);
 };
 
 fetchGithub();
