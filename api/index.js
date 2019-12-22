@@ -17,7 +17,7 @@ app.use(function(req, res, next) {
 });
 
 app.get('/', (req, res) => res.send('Jobs API!'));
-app.get('/jobs', async (req, res) => {
+app.get('/api/jobs', async (req, res) => {
   const jobs = await getAsync('github');
   return res.send(jobs);
 });
