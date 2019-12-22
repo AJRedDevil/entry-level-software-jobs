@@ -19,3 +19,12 @@ body {
   height: 30px;
   float: right;
 }
+
+.flex-align-mid {
+  display: flex;
+  align-items: center;
+}
+
+.job-title-location {
+  margin-left: 20px;
+}
