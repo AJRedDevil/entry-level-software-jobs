@@ -7,8 +7,19 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 
 import Job from './Job';
+import JobModal from './JobModal';
 
 export default function Jobs({jobs}) {
+  // modal
+  const [open, setOpen] = React.useState(false);
+  const [selectedJob, selectJob] = React.useState([]);
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   // pagination
   const numJobs = jobs.length;
   const numPages = Math.ceil(numJobs / 50);
@@ -30,6 +41,7 @@ export default function Jobs({jobs}) {
 
   return (
     <div className="jobs">
+      <JobModal open={open} job={selectedJob} handleClose={handleClose} />
       <Typography variant="h4" component="h1">
         Entry Level Software Jobs
       </Typography>
@@ -37,7 +49,14 @@ export default function Jobs({jobs}) {
         Found {numJobs} Jobs
       </Typography>
       {jobsOnPage.map((job, i) => (
-        <Job key={i} job={job} />
+        <Job
+          key={i}
+          job={job}
+          onClick={() => {
+            handleClickOpen();
+            selectJob(job);
+          }}
+        />
       ))}
       <div>
         Page {activeStep + 1} of {numPages}
