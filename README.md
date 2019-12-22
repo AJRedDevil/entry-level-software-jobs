@@ -11,6 +11,8 @@
 - Simple filtering algorithm
 - Create Docker Images
 
+![Architecture Diagram][https://gist.github.com/entry-level-software-jobs/job_board.png]
+
 ## Technologies
 
 - React JS
