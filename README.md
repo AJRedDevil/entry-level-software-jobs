@@ -11,6 +11,8 @@
 - Simple filtering algorithm
 - Create Docker Images
 
+![Architecture Diagram](images/job_board.png)
+
 ## Technologies
 
 - React JS
