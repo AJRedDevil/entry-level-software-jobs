@@ -13,6 +13,7 @@ export default function Jobs({jobs}) {
   const numJobs = jobs.length;
   const numPages = Math.ceil(numJobs / 50);
   const [activeStep, setActiveStep] = React.useState(0);
+  const jobsOnPage = jobs.slice(activeStep * 50, activeStep * 50 + 50);
 
   // step == 0, show 0-49
   // step == 1, show 50-99
@@ -35,7 +36,7 @@ export default function Jobs({jobs}) {
       <Typography variant="h6" component="h2">
         Found {numJobs} Jobs
       </Typography>
-      {jobs.map((job, i) => (
+      {jobsOnPage.map((job, i) => (
         <Job key={i} job={job} />
       ))}
       <div>
