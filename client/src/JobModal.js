@@ -26,7 +26,9 @@ export default function JobModal({job, open, handleClose}) {
         aria-describedby="alert-dialog-slide-description"
       >
         <DialogTitle id="alert-dialog-slide-title">
-          {"Use Google's location service?"}
+          {job.title}
+          {job.company}
+          <img className="detail-logo" src={job.company_logo} />
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
