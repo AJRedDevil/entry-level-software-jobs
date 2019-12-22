@@ -9,7 +9,13 @@ import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import Job from './Job';
 
 export default function Jobs({jobs}) {
+  // pagination
+  const numJobs = jobs.length;
+  const numPages = Math.ceil(numJobs / 50);
   const [activeStep, setActiveStep] = React.useState(0);
+
+  // step == 0, show 0-49
+  // step == 1, show 50-99
 
   const handleNext = () => {
     setActiveStep(prevActiveStep => prevActiveStep + 1);
@@ -29,13 +35,20 @@ export default function Jobs({jobs}) {
       {jobs.map((job, i) => (
         <Job key={i} job={job} />
       ))}
+      <div>
+        Page {activeStep + 1} of {numPages}
+      </div>
       <MobileStepper
         variant="progress"
-        steps={6}
+        steps={numPages}
         position="static"
         activeStep={activeStep}
         nextButton={
-          <Button size="small" onClick={handleNext} disabled={activeStep === 5}>
+          <Button
+            size="small"
+            onClick={handleNext}
+            disabled={activeStep === numPages - 1}
+          >
             Next
             <KeyboardArrowRight />
           </Button>
