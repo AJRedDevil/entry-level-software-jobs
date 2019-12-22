@@ -32,6 +32,9 @@ export default function Jobs({jobs}) {
       <Typography variant="h4" component="h1">
         Entry Level Software Jobs
       </Typography>
+      <Typography variant="h6" component="h2">
+        Found {numJobs} Jobs
+      </Typography>
       {jobs.map((job, i) => (
         <Job key={i} job={job} />
       ))}
