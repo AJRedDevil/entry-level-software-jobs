@@ -11,7 +11,7 @@
 - Simple filtering algorithm
 - Create Docker Images
 
-![Architecture Diagram][https://raw.githubusercontent.com/AJRedDevil/entry-level-software-jobs/develop/Job_Board.png]
+![Architecture Diagram](images/job_board.png)
 
 ## Technologies
 
