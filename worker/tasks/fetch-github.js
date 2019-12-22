@@ -38,7 +38,7 @@ const fetchGithub = async () => {
   console.log(`filtered down to ${jrJobs.length}`);
 
   // set in redis
-  const successs = await setAsync('github', JSON.stringify(allJobs));
+  const successs = await setAsync('github', JSON.stringify(jrJobs));
 
   console.log(successs);
 };
