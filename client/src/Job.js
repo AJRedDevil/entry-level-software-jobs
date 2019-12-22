@@ -1,10 +1,11 @@
 import React from 'react';
+import {Paper, Typography} from '@material-ui/core';
 
 export default function Job({job}) {
   return (
-    <div className="job">
-      {job.title}
-      {job.company}
-    </div>
+    <Paper className="job">
+      <Typography>{job.title}</Typography>
+      <Typography>{job.company}</Typography>
+    </Paper>
   );
 }
