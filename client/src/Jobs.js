@@ -7,8 +7,16 @@ import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 
 import Job from './Job';
 import JobModal from './JobModal';
+import LocationRadio from './LocationRadio';
 
 export default function Jobs({jobs}) {
+  // Location
+  const [selectedLocation, setSelectedLocation] = React.useState('all');
+
+  const handleChange = event => {
+    setSelectedLocation(event.target.value);
+  };
+
   // modal
   const [open, setOpen] = React.useState(false);
   const [selectedJob, selectJob] = React.useState([]);
@@ -55,6 +63,7 @@ export default function Jobs({jobs}) {
       <Typography variant="h6" component="h2">
         Found {numJobs} Jobs
       </Typography>
+      <LocationRadio value={selectedLocation} handleChange={handleChange} />
       {jobsOnPage.map((job, i) => (
         <Job
           key={i}
