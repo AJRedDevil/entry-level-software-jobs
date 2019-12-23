@@ -1,3 +1,22 @@
+# API
+dockerize-api:
+	docker build -t ajreddevil/api-job-board api/
+
+start-api:
+	docker run --name api \
+		-p 5000:5000 \
+		--restart unless-stopped \
+		--link redis:redis \
+		-e NODE_ENV=docker \
+		-d ajreddevil/api-job-board
+
+stop-api:
+	docker stop api
+	docker rm api
+
+view-api-logs:
+	docker logs -f api
+
 # worker
 dockerize-worker:
 	docker build -t ajreddevil/worker-job-board worker/
