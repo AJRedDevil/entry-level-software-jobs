@@ -6,9 +6,9 @@ setup-volume:
 
 start-redis:
 	docker run --name redis-job-board \
-		-p 6379:6379 \
 		--restart unless-stopped \
 		-v ${PWD}/data:/data\
+		-p 6379:6379 \
 		-d redis redis-server --appendonly yes
 	
 stop-redis:
