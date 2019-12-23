@@ -1,5 +1,7 @@
 body {
-  margin: 20 40px;
+  margin: 20px 40px;
+  background-color: rgb(56, 62, 63);
+  color: white;
 }
 
 .job {
@@ -27,4 +29,17 @@ body {
 
 .job-title-location {
   margin-left: 20px;
+}
+
+.location {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+  padding: 20px 10px;
+}
+
+.location:hover {
+  cursor: pointer;
+  color: #666666;
 }
