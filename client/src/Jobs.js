@@ -10,8 +10,11 @@ import JobModal from './JobModal';
 import LocationRadio from './LocationRadio';
 
 export default function Jobs({jobs}) {
-  // Location
-  const [selectedLocation, setSelectedLocation] = React.useState('all');
+  // location radio section
+  const [location, setLocation] = React.useState('all');
+  const handleLocationChange = event => {
+    setLocation(event.target.value);
+  };
 
   const handleChange = event => {
     setSelectedLocation(event.target.value);
@@ -63,7 +66,7 @@ export default function Jobs({jobs}) {
       <Typography variant="h6" component="h2">
         Found {numJobs} Jobs
       </Typography>
-      <LocationRadio value={selectedLocation} handleChange={handleChange} />
+      <LocationRadio value={location} handleChange={handleLocationChange} />
       {jobsOnPage.map((job, i) => (
         <Job
           key={i}
