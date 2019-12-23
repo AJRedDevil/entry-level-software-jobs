@@ -30,3 +30,16 @@ body {
 .job-title-location {
   margin-left: 20px;
 }
+
+.location {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+  padding: 20px 10px;
+}
+
+.location:hover {
+  cursor: pointer;
+  color: #666666;
+}
