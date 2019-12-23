@@ -21,6 +21,8 @@ const fetchGithub = async () => {
     onPage = 0;
   const allJobs = [];
 
+  console.log('fetching jobs from Github');
+
   while (resultCount > 0) {
     const res = await fetch(`${baseURL}?page=${onPage}`);
     const jobs = await res.json();
