@@ -8,6 +8,7 @@ import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import Job from './Job';
 import JobModal from './JobModal';
 import LocationRadio from './LocationRadio';
+import {filterJobsByLocation} from './utils';
 
 export default function Jobs({jobs}) {
   // location radio section
@@ -16,9 +17,8 @@ export default function Jobs({jobs}) {
     setLocation(event.target.value);
   };
 
-  const handleChange = event => {
-    setSelectedLocation(event.target.value);
-  };
+  // filter jobs based on location
+  const filteredJobs = filterJobsByLocation(jobs, location);
 
   // modal
   const [open, setOpen] = React.useState(false);
@@ -31,10 +31,10 @@ export default function Jobs({jobs}) {
   };
 
   // pagination
-  const numJobs = jobs.length;
+  const numJobs = filteredJobs.length;
   const numPages = Math.ceil(numJobs / 50);
   const [activeStep, setActiveStep] = React.useState(0);
-  const jobsOnPage = jobs.slice(activeStep * 50, activeStep * 50 + 50);
+  const jobsOnPage = filteredJobs.slice(activeStep * 50, activeStep * 50 + 50);
 
   // step == 0, show 0-49
   // step == 1, show 50-99
