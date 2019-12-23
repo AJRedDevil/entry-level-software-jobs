@@ -1,5 +1,7 @@
 body {
-  margin: 20 40px;
+  margin: 20px 40px;
+  background-color: rgb(56, 62, 63);
+  color: white;
 }
 
 .job {
