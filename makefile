@@ -1,3 +1,21 @@
+# worker
+dockerize-worker:
+	docker build -t ajreddevil/worker-job-board worker/
+
+start-worker:
+	docker run --name worker \
+		--restart unless-stopped \
+		--link redis:redis \
+		-e NODE_ENV=docker \
+		-d ajreddevil/worker-job-board
+
+stop-worker:
+	docker stop worker
+	docker rm worker
+
+view-worker-logs:
+	docker logs -f worker
+
 # Redis
 download-redis:
 	docker pull redis
