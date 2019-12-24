@@ -69,3 +69,10 @@ start-redis:
 stop-redis:
 	docker stop redis
 	docker rm redis
+
+# RUN cmd
+run-job-board:
+	docker-compose -p job-board up -d
+
+stop-job-board:
+	docker-compose -p job-board down
