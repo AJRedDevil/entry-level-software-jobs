@@ -1,0 +1,50 @@
+version: '3.7'
+services:
+  client:
+    image: ajreddevil/client-job-board
+    restart: always
+    container_name: client
+    ports:
+      - '80:80'
+    links:
+      - api
+    depends_on:
+      - api
+    networks:
+      - webappnetwork
+  api:
+    image: ajreddevil/api-job-board
+    restart: always
+    container_name: api
+    ports:
+      - '5000:5000'
+    environment:
+      NODE_ENV: 'docker'
+    depends_on:
+      - redis
+    networks:
+      - webappnetwork
+  worker:
+    image: ajreddevil/worker-job-board
+    restart: always
+    container_name: worker
+    environment:
+      NODE_ENV: 'docker'
+    depends_on:
+      - redis
+    networks:
+      - webappnetwork
+  redis:
+    image: redis
+    restart: always
+    container_name: redis
+    volumes:
+      - ${PWD}/data:/data
+    ports:
+      - 6379:6379
+    command: redis-server --appendonly yes
+    networks:
+      - webappnetwork
+networks:
+  webappnetwork:
+    driver: bridge

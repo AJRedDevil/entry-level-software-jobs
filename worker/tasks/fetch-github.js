@@ -1,6 +1,9 @@
 const fetch = require('node-fetch');
 const redis = require('redis'),
-  client = redis.createClient();
+  client = redis.createClient(
+    6379,
+    process.env.NODE_ENV === 'docker' ? 'redis' : 'localhost'
+  );
 const {promisify} = require('util');
 const setAsync = promisify(client.set).bind(client);
 
@@ -20,6 +23,8 @@ const fetchGithub = async () => {
   let resultCount = 1,
     onPage = 0;
   const allJobs = [];
+
+  console.log('fetching jobs from Github');
 
   while (resultCount > 0) {
     const res = await fetch(`${baseURL}?page=${onPage}`);

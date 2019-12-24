@@ -1,6 +1,9 @@
 const express = require('express');
 const redis = require('redis'),
-  client = redis.createClient();
+  client = redis.createClient(
+    6379,
+    process.env.NODE_ENV === 'docker' ? 'redis' : 'localhost'
+  );
 const {promisify} = require('util');
 const getAsync = promisify(client.get).bind(client);
 

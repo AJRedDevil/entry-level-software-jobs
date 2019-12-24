@@ -5,6 +5,9 @@
   "main": "index.js",
   "author": "Ajan Lal Shrestha",
   "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  },
   "dependencies": {
     "cron": "1.7.2",
     "node-fetch": "2.6.0",
