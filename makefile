@@ -17,6 +17,23 @@ stop-api:
 view-api-logs:
 	docker logs -f api
 
+# Client
+dockerize-client:
+	docker build -t ajreddevil/client-job-board client/
+
+start-client:
+	docker run --name client \
+		-p 3000:3000 \
+		--restart unless-stopped \
+		-d ajreddevil/client-job-board
+
+stop-client:
+	docker stop client
+	docker rm client
+
+view-client-logs:
+	docker logs -f client
+
 # worker
 dockerize-worker:
 	docker build -t ajreddevil/worker-job-board worker/
